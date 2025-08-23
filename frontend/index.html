@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Article Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Fake Article Detector</h1>
+        <p class="subtitle">Paste a snippet of any article to get started</p>
+        
+        <div class="input-container">
+            <textarea id="articleInput" placeholder="Paste your news article or claim here..."></textarea>
+        </div>
+        
+        <button class="analyze-btn" onclick="analyzeArticle()">Analyze</button>
+        
+        <div id="result" class="result"></div>
+    </div>
 
+    <footer class="footer">
+        <a href="https://github.com" target="_blank">GitHub</a>
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    </footer>
+
+    <script>
+        async function fetchFromAPI(postData){
+            
+            try{
+                const response = await fetch('http://127.0.0.1:8000/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ text: postData })
+                })
+                if(!response.ok){
+                    throw new Error('Network response was not ok' + response.statusText);
+                }
+            }
+            catch(error){
+            console.error('Error sending POST data:', error);
+            document.getElementById('result').innerText = 'Error analyzing article';
+        }
+        
+        const result = await response.json();
+
+        return result['label'];
+
+        }
+
+        // Function to fetch from API and analyze the article snippet
+        async function analyzeArticle() {
+        
+            const input = document.getElementById('articleInput').value.trim();
+            const resultDiv = document.getElementById('result');
+            const body = document.body;
+            
+            if (!input) {
+                alert('Please enter some text to analyze');
+                return;
+            }
+
+            // Reset classes
+            body.classList.remove('bg-real', 'bg-fake');
+            resultDiv.classList.remove('show');
+
+            // Fetching from API, then changing color accordingly
+            const prediction = await fetchFromAPI(input);
+            if(prediction == "REAL"){
+                body.classList.add('bg-real');
+                resultDiv.innerHTML = '✓ This appears to be AUTHENTIC news';
+                resultDiv.style.color = '#fff';
+            }
+            else{
+                body.classList.add('bg-fake');
+                resultDiv.innerHTML = '✗ This appears to be FAKE news';
+                resultDiv.style.color = '#fff';
+            }
+        }
+        
+        // Allow Enter key to trigger analysis
+        document.getElementById('articleInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                analyzeArticle();
+            }
+        });
+    </script>
+</body>
+</html>

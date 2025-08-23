@@ -13,7 +13,6 @@ label_map = {
 def predict(text):
     result = classifier(text)[0]
     return{
-        "label": label_map[result['label']],
+        "label": result['label'],
         "score": result['score']
     }
-
