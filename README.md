@@ -2,7 +2,7 @@
 
 A simple full-stack web application that detects whether a news article is real or fake using a pretrained BERT-based model from Hugging Face.
 
-# 📌 Features
+# Features
 
 - 🧠 NLP model powered by jy46604790/Fake-News-Bert-Detect
 
@@ -12,13 +12,13 @@ A simple full-stack web application that detects whether a news article is real 
 
 - ☁️ Fully deployable (Render for backend, Vercel for frontend)
 
-# 🖼 Demo
+# Demo
 
 🟢 Live App
 
 📽 [Optional: Add demo video or screenshot GIF]
 
-# 🧠 Model
+# Model
 
 This project uses a Hugging Face Transformers pipeline based on a fine-tuned BERT model:
 
@@ -34,7 +34,7 @@ I'm actively working on developing a custom-trained model for fake news detectio
 - Training a lightweight model (e.g., TF-IDF + Logistic Regression or fine-tuned DistilBERT)
 - Comparing its performance against the pretrained BERT model currently deployed
 
-# 🚀 Tech Stack
+# Tech Stack
 - Layer	Tool/Tech
 - Frontend	HTML, CSS, JavaScript
 - Backend	Flask + Flask-CORS + FASTAPI
@@ -56,7 +56,7 @@ fake-news-detector<br>
 └── .gitignore
 </pre>
 
-# 🧪 Local Setup
+# Local Setup
 🔹 Clone the repository
 git clone https://github.com/your-username/fake-news-detector.git
 cd fake-news-detector
@@ -74,7 +74,7 @@ python app.py
 
 Open frontend/index.html in your browser
 
-🌐 Deployment Guide
+## Deployment Guide
 🔹 Backend on Render
 
 Push backend/ folder to GitHub
@@ -99,7 +99,7 @@ Create project → Import GitHub → Auto deploys static site
 
 Update script.js to point to your backend URL
 
-## 💬 Example Input/Output
+## Example Input/Output
 Input:
 NASA confirms presence of alien life on Mars.
 
@@ -109,7 +109,7 @@ Output:
   "score": 96.82
 }
 
-# 📈 Future Improvements
+# Future Improvements
 
 Allow scraping from URLs
 
@@ -119,7 +119,7 @@ Add explanations via LIME or SHAP
 
 Log predictions for analytics
 
-# 👨‍💻 Author
+# Author
 
 Shrish Vishnu Rajesh Kumar
 - [GitHub]([url](https://github.com/shrish346))
