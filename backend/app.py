@@ -1,9 +1,20 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 from model import predict
 
 app = FastAPI()
 
+
+ALLOWED_ORIGINS = ["https://shrish346.github.io/fake-news-detector/"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=ALLOWED_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # To recieve a JSON, input needs to be wrapped in a pydantic model
 class TextRequest(BaseModel):
     text: str
