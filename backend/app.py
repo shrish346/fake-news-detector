@@ -1,12 +1,12 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from model import predict
+from .model import predict
 
 app = FastAPI()
 
 
-ALLOWED_ORIGINS = ["https://shrish346.github.io/fake-news-detector/"]
+ALLOWED_ORIGINS = ["https://shrish346.github.io"]
 
 app.add_middleware(
     CORSMiddleware,
