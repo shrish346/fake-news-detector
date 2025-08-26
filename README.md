@@ -12,11 +12,10 @@ A simple full-stack web application that detects whether a news article is real 
 
 - ☁️ Fully deployable (Render for backend, Vercel for frontend)
 
-# Demo
+# Screenshot
 
-🟢 Live App
+<img width="1179" height="759" alt="IMG_8278" src="https://github.com/user-attachments/assets/9e0e2ce7-a045-4ff9-a071-d18606dbbdf8" />
 
-📽 [Optional: Add demo video or screenshot GIF]
 
 # Model
 
